@@ -8,30 +8,46 @@ import Buysell from "@/components/Buysell";
 import SocialActivityPanel from "@/components/SocialActivity";
 import TradingControlsPanel from "@/components/TradingControlPanel";
 import WalletSelectionPanel from "@/components/Selectwallet";
+import TrendingTokensBar from "@/components/TrendingBar";
+
+interface WalletSelectionPanelProps {
+  onClose: () => void;
+}
+
+interface TradingControlsPanelProps {
+  onWalletClick: () => void;
+}
 
 export default function Home() {
-  const [isWalletOpen, setIsWalletOpen] = useState(false);
+  const [isWalletOpen, setIsWalletOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex min-h-screen space-x-5">
-      <div className="flex-1 flex flex-col items-start space-y-6">
-        <TradingViewChart />
-        <TransactionsTable />
+    <main className="min-h-screen space-y-4 p-4 max-w-full">
+      <section className="w-full">
+        <TrendingTokensBar />
+      </section>
+
+      <div className="flex gap-6 w-full">
+        <section className="flex-1 space-y-4 min-w-0">
+          <TradingViewChart />
+          <TransactionsTable />
+        </section>
+
+        <section className="w-[480px] space-y-4">
+          {isWalletOpen ? (
+            <WalletSelectionPanel onClose={() => setIsWalletOpen(false)} />
+          ) : (
+            <>
+              <Coindetail />
+              <div className="flex gap-4">
+                <Buysell />
+                <TradingControlsPanel onWalletClick={() => setIsWalletOpen(true)} />
+              </div>
+              <SocialActivityPanel />
+            </>
+          )}
+        </section>
       </div>
-      <div id="dialog also" className="w-[40%] space-y-4">
-        {isWalletOpen ? (
-          <WalletSelectionPanel onClose={() => setIsWalletOpen(false)} />
-        ) : (
-          <>
-            <Coindetail />
-            <div className="flex space-x-5">
-              <Buysell />
-              <TradingControlsPanel onWalletClick={() => setIsWalletOpen(true)} />
-            </div>
-            <SocialActivityPanel />
-          </>
-        )}
-      </div>
-    </div>
+    </main>
   );
 }

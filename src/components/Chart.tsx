@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import TradingHeader from "./chartheader";
 
 const TradingViewChart = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,11 +37,14 @@ const TradingViewChart = () => {
   }, []);
 
   return (
+    <div>
+      <TradingHeader />
       <div
         id="tradingview_chart"
         ref={containerRef}
         className="w-full h-[400px] z-20"
       />
+    </div>
   );
 };
 

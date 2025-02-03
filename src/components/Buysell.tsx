@@ -2,29 +2,13 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useState } from 'react';
 
-interface TimeframeData {
-  label: string;
-  percentage: number;
-  selected?: boolean;
-}
-
-interface BuysellProps {
-  buyTransactions: number;
-  sellTransactions: number;
-  buyVolume: number;
-  sellVolume: number;
-  buyMakers: number;
-  sellMakers: number;
-  timeframes: TimeframeData[];
-}
-
-const formatCurrency = (value: number) => 
+const formatCurrency = (value: number): string => 
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
 
-const formatPercentage = (value: number) => 
+const formatPercentage = (value: number): string => 
   `${value.toFixed(2)}%`;
 
-const defaultTimeframes: TimeframeData[] = [
+const defaultTimeframes = [
   { label: '5M', percentage: 0.72, selected: true },
   { label: '1H', percentage: 0.72, selected: false },
   { label: '6H', percentage: 20, selected: false },
@@ -55,7 +39,7 @@ const StatRow = ({
   label, 
   buyValue, 
   sellValue, 
-  formatValue = (v: number) => v.toLocaleString() 
+  formatValue = (v: number): string => v.toLocaleString() 
 }: { 
   label: string;
   buyValue: number;
@@ -74,17 +58,9 @@ const StatRow = ({
   </div>
 );
 
-const Buysell = ({
-  buyTransactions = 28472,
-  sellTransactions = 12711,
-  buyVolume = 14.6e6,
-  sellVolume = 7.3e6,
-  buyMakers = 6564,
-  sellMakers = 5014,
-  timeframes = defaultTimeframes,
-}: BuysellProps) => {
+const Buysell = () => {
   const [selectedTimeframes, setSelectedTimeframes] = 
-    useState<TimeframeData[]>(timeframes);
+    useState(defaultTimeframes);
 
   const handleTimeframeClick = (clickedLabel: string) => {
     setSelectedTimeframes(prev => prev.map(tf => ({
@@ -95,26 +71,23 @@ const Buysell = ({
 
   return (
     <Card className="bg-[#1a1a1a] border-none">
-      <CardHeader className="pb-2">
+      <CardHeader className="pb-4">
         <CardTitle>
-          <div className="flex items-center justify-between mb-4">
-           
-          </div>
-          <div className="grid grid-cols-4 gap-4 text-sm">
+          <div className="grid grid-cols-4 gap-6 p-2">
             {selectedTimeframes.map((tf) => (
               <button
                 key={tf.label}
                 onClick={() => handleTimeframeClick(tf.label)}
-                className={`flex flex-col items-center rounded-full py-2 px-4 transition-all
+                className={`flex flex-col items-center justify-center rounded-lg py-3 px-6 transition-all
                   ${tf.selected 
                     ? 'bg-gradient-to-b from-white/10 to-transparent border border-white/20' 
                     : 'text-gray-400 hover:bg-gray-800/30'
                   }`}
               >
-                <span className={`text-xs ${tf.selected ? 'text-white' : 'text-gray-400'}`}>
+                <span className={`text-sm font-medium mb-1 ${tf.selected ? 'text-white' : 'text-gray-400'}`}>
                   {tf.label}
                 </span>
-                <span className={tf.selected ? 'text-white' : 'text-green-400'}>
+                <span className={`${tf.selected ? 'text-white' : 'text-green-400'} text-sm`}>
                   {formatPercentage(tf.percentage)}
                 </span>
               </button>
@@ -125,19 +98,19 @@ const Buysell = ({
       <CardContent className="space-y-4">
         <StatRow 
           label="VOLUME"
-          buyValue={buyVolume}
-          sellValue={sellVolume}
+          buyValue={14600000}
+          sellValue={7300000}
           formatValue={formatCurrency}
         />
         <StatRow 
           label="MAKERS"
-          buyValue={buyMakers}
-          sellValue={sellMakers}
+          buyValue={6564}
+          sellValue={5014}
         />
         <StatRow 
           label="TXNS"
-          buyValue={buyTransactions}
-          sellValue={sellTransactions}
+          buyValue={28472}
+          sellValue={12711}
         />
       </CardContent>
     </Card>

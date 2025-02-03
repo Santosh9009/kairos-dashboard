@@ -24,9 +24,9 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
       <div className="grid grid-cols-2 gap-4 mb-4">
         <button
           onClick={() => setActiveTab("buy")}
-          className={`flex justify-center items-center gap-3 py-2 px-4 rounded-md transition-all ${
+          className={`flex font-space-grotesk justify-center items-center gap-3 py-2 px-4 rounded-md transition-all ${
             activeTab === "buy"
-              ? "bg-green-500 text-white"
+              ? "bg-green-400 text-white"
               : "bg-gray-800 text-gray-400 hover:bg-gray-700"
           }`}
         >
@@ -35,7 +35,7 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
         </button>
         <button
           onClick={() => setActiveTab("sell")}
-          className={`py-2 px-4 rounded-md transition-all ${
+          className={` font-space-grotesk py-2 px-4 rounded-md transition-all ${
             activeTab === "sell"
               ? "bg-red-500 text-white"
               : "bg-gray-800 text-gray-400 hover:bg-gray-700"
@@ -130,11 +130,11 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
       </div>
       <div className="mt-4">
         <Button
-          className={`flex w-full ${
+          className={`flex w-full font-space-grotesk font-bold ${
             activeTab === "buy"
-              ? "bg-green-500 hover:bg-green-600"
-              : "bg-red-500 hover:bg-red-600"
-          } text-white`}
+              ? "bg-green-400 hover:bg-green-600"
+              : "bg-red-400 hover:bg-red-600"
+          } text-black`}
         >
           {activeTab === "buy" && <Image src={thunder} alt="buy" />}
           Quick {activeTab === "buy" ? "Buy" : "Sell"}
@@ -144,28 +144,10 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
         Once you click on Quick {activeTab === "buy" ? "Buy" : "Sell"}, your
         transaction is sent immediately.
       </div>
-      <div className="mt-2">
-        <Button variant="ghost" size="icon">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </Button>
-      </div>
       {isWalletOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="relative">
-            <WalletSelectionPanel />
+            <WalletSelectionPanel onClose={()=>console.log('')}/>
             <button 
               onClick={() => setIsWalletOpen(false)}
               className="absolute top-2 right-2 text-gray-400 hover:text-white"
