@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import wallet from "../../public/wallet.png";
 import thunder from "../../public/thunder.png";
+import sellIcon from "../../public/sellIcion.png";
 import solana from "../../public/solana.png";
 import WalletSelectionPanel from "./Selectwallet";
 import Image from "next/image";
@@ -35,12 +36,13 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
         </button>
         <button
           onClick={() => setActiveTab("sell")}
-          className={` font-space-grotesk py-2 px-4 rounded-md transition-all ${
+          className={`flex justify-center items-center gap-3 font-space-grotesk py-2 px-4 rounded-md transition-all ${
             activeTab === "sell"
               ? "bg-red-500 text-white"
               : "bg-gray-800 text-gray-400 hover:bg-gray-700"
           }`}
         >
+          <Image src={sellIcon} alt="sell" />
           Sell
         </button>
       </div>
@@ -136,7 +138,7 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
               : "bg-red-400 hover:bg-red-600"
           } text-black`}
         >
-          {activeTab === "buy" && <Image src={thunder} alt="buy" />}
+          {activeTab === "buy" ? <Image src={thunder} alt="buy" /> : <Image src={sellIcon} alt="sell" />}
           Quick {activeTab === "buy" ? "Buy" : "Sell"}
         </Button>
       </div>

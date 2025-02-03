@@ -7,13 +7,13 @@ import fire from "../../public/fire.png";
 
 const Coindetail = () => {
   return (
-    <div className="w-full mx-auto bg-[#1a1a1a] text-white rounded-2xl shadow-lg p-6 space-y-6">
+    <div className="w-full mx-auto bg-[#1a1a1a] text-white rounded-2xl shadow-lg p-3 space-y-6">
       {/* Header Section */}
       <div className="flex items-center gap-3">
         <Image
           alt="dog"
           src={dog}
-          className="w-12 h-12 object-contain rounded-full"
+          className="w-10 h-10 object-contain rounded-full"
         />
         <span className="text-lg font-semibold">dogwifhat</span>
         <button className="p-1 hover:bg-gray-700 rounded-lg">

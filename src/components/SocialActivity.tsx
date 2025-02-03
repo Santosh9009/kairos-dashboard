@@ -1,7 +1,9 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { TrendingUp, MessageCircle, ChevronRight } from 'lucide-react';
-import dogwihat from '../../public/dogimage.png'
-import Image from 'next/image';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { TrendingUp, MessageCircle, ChevronRight } from "lucide-react";
+import dogwihat from "../../public/dogimage.png";
+import social1 from "../../public/social1.png";
+import social2 from "../../public/social2.png";
+import Image from "next/image";
 
 const SocialActivityPanel = () => {
   return (
@@ -10,9 +12,9 @@ const SocialActivityPanel = () => {
         <CardTitle className="flex items-center justify-between text-base">
           <div className="flex items-center space-x-2">
             <span className="text-gray-200">Social Activity</span>
-            <TrendingUp className="w-3 h-3 text-green-400" />
+            <Image alt="social" src={social1} />
+            <Image alt="social" src={social2} />
           </div>
-          <MessageCircle className="w-3 h-3 text-gray-400" />
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -20,16 +22,22 @@ const SocialActivityPanel = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-700">
-              <Image src={dogwihat} alt="dogwifhat" className="w-full h-full object-cover" />
+              <Image
+                src={dogwihat}
+                alt="dogwifhat"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
-              <div className="text-sm font-medium text-gray-200">@dogwifhat</div>
+              <div className="text-sm font-medium text-gray-200">
+                @dogwifhat
+              </div>
               <div className="text-xs text-gray-400">dogwifhat</div>
             </div>
           </div>
           <div className="flex flex-col items-end">
             <div className="text-sm font-medium text-gray-200">
-              {(100000).toLocaleString('en-US', { notation: 'compact' })}
+              {(100000).toLocaleString("en-US", { notation: "compact" })}
             </div>
             <div className="text-xs text-gray-400">Total Followers</div>
           </div>
@@ -54,9 +62,9 @@ const SocialActivityPanel = () => {
             <span className="text-xs font-medium text-gray-200">85%</span>
           </div>
           <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 transition-all"
-              style={{ width: '85%' }}
+              style={{ width: "85%" }}
             />
           </div>
         </div>

@@ -70,50 +70,52 @@ const Buysell = () => {
   };
 
   return (
-    <Card className="bg-[#1a1a1a] border-none">
-      <CardHeader className="pb-4">
-        <CardTitle>
-          <div className="grid grid-cols-4 gap-6 p-2">
-            {selectedTimeframes.map((tf) => (
-              <button
-                key={tf.label}
-                onClick={() => handleTimeframeClick(tf.label)}
-                className={`flex flex-col items-center justify-center rounded-lg py-3 px-6 transition-all
-                  ${tf.selected 
-                    ? 'bg-gradient-to-b from-white/10 to-transparent border border-white/20' 
-                    : 'text-gray-400 hover:bg-gray-800/30'
-                  }`}
-              >
-                <span className={`text-sm font-medium mb-1 ${tf.selected ? 'text-white' : 'text-gray-400'}`}>
-                  {tf.label}
-                </span>
-                <span className={`${tf.selected ? 'text-white' : 'text-green-400'} text-sm`}>
-                  {formatPercentage(tf.percentage)}
-                </span>
-              </button>
-            ))}
-          </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <StatRow 
-          label="VOLUME"
-          buyValue={14600000}
-          sellValue={7300000}
-          formatValue={formatCurrency}
-        />
-        <StatRow 
-          label="MAKERS"
-          buyValue={6564}
-          sellValue={5014}
-        />
-        <StatRow 
-          label="TXNS"
-          buyValue={28472}
-          sellValue={12711}
-        />
-      </CardContent>
-    </Card>
+    <div className="flex items-center justify-center w-full h-full">
+      <Card className="bg-[#1a1a1a] border-none w-full max-w-2xl">
+        <CardHeader className="pb-4">
+          <CardTitle>
+            <div className="grid grid-cols-4 gap-x-8 justify-items-center p-4">
+              {selectedTimeframes.map((tf) => (
+                <button
+                  key={tf.label}
+                  onClick={() => handleTimeframeClick(tf.label)}
+                  className={`flex flex-col items-center justify-center rounded-lg py-2 px-4 min-w-[80px] transition-all
+                    ${tf.selected 
+                      ? 'bg-gradient-to-b from-white/10 to-transparent border border-white/20' 
+                      : 'text-gray-400 hover:bg-gray-800/30'
+                    }`}
+                >
+                  <span className={`text-sm font-medium mb-1 ${tf.selected ? 'text-white' : 'text-gray-400'}`}>
+                    {tf.label}
+                  </span>
+                  <span className={`${tf.selected ? 'text-white' : 'text-green-400'} text-sm`}>
+                    {formatPercentage(tf.percentage)}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <StatRow 
+            label="VOLUME"
+            buyValue={14600000}
+            sellValue={7300000}
+            formatValue={formatCurrency}
+          />
+          <StatRow 
+            label="MAKERS"
+            buyValue={6564}
+            sellValue={5014}
+          />
+          <StatRow 
+            label="TXNS"
+            buyValue={28472}
+            sellValue={12711}
+          />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
