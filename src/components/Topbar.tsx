@@ -12,21 +12,18 @@ const Topbar = () => {
 
   return (
     <header
-      className={`
+      className={` font-space-grotesk
       flex items-center flex-grow justify-between px-4 py-2 bg-[#181818] border-b border-gray-800
       transition-all duration-300
       ${isExpanded ? "" : ""}
     `}
     >
+      
+      <span>Terminal</span>
+      <div className="h-[60%] w-[2px] bg-white/10 mx-2"></div>
       <div className="flex items-center space-x-4">
         <Button
-          className="bg-[#2a2a2a] hover:bg-[#3a3a3a] text-white transition-colors duration-200"
-          variant="default"
-        >
-          Terminal
-        </Button>
-        <Button
-          className="text-gray-400 hover:text-white hover:bg-[#2a2a2a] transition-colors duration-200"
+          className="border border-white/10 bg-gradient-to-r from-[#2a2a2a] via-[#323232] to-[#272727] hover:from-[#353535] hover:via-[#3a3a3a] hover:to-[#303030] text-white transition-all duration-200 rounded-xl shadow-lg"
           variant="ghost"
         >
           Trading Desk

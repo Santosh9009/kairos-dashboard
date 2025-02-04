@@ -26,7 +26,7 @@ export default function TransactionsTable() {
             onClick={() => setActiveMainTab(tab)}
             className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 outline-none ${
               activeMainTab === tab 
-                ? "bg-white/5 text-white shadow-[0_0_10px_rgba(255,255,255,0.3)] border border-white/20" 
+                ? "rounded-xl bg-gradient-to-t from-[#2d2d2d] via-[#1f1f1f] to-[#1a1a1a] hover:from-[#383838] hover:via-[#2d2d2d] hover:to-[#232323] text-white border border-white/20" 
                 : "text-gray-400 hover:bg-white/5 hover:text-white hover:border-white/10 border border-transparent"
             }`}
           >
@@ -45,7 +45,7 @@ export default function TransactionsTable() {
                 onClick={() => setActiveSubTab(tab)}
                 className={`px-3 py-1 text-xs font-medium rounded-md transition-all duration-300 outline-none relative ${
                   activeSubTab === tab 
-                    ? "text-white after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-green-500 after:rounded-full" 
+                    ? "bg-gradient-to-t from-[#2d2d2d] via-[#1f1f1f] to-[#1a1a1a] hover:from-[#383838] hover:via-[#2d2d2d] hover:to-[#232323] text-white after:absolute after:bottom-[-8px] after:left-0 after:w-full after:h-[3px] after:bg-green-500 after:rounded-full" 
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -70,7 +70,7 @@ export default function TransactionsTable() {
             <tbody>
               {transactions.map((tx, index) => (
                 <tr key={index} className="border-b border-gray-800 hover:bg-gray-900">
-                  <td className={`py-2 ${tx.type === "Buy" ? "text-green-400" : "text-red-400"}`}>{tx.date}</td>
+                  <td className={`py-2 ${tx.type === "Buy" ? "text-green-300" : "text-red-300"}`}>{tx.date}</td>
                   <td>
                     <span className={`inline-block px-3 py-1 rounded-md font-medium text-xs ${
                       tx.type === "Buy" 
@@ -80,11 +80,11 @@ export default function TransactionsTable() {
                       {tx.type}
                     </span>
                   </td>
-                  <td className={tx.type === "Buy" ? "text-green-400" : "text-red-400"}>${tx.totalUSD.toFixed(2)}</td>
-                  <td className={tx.type === "Buy" ? "text-green-400" : "text-red-400"}>${tx.priceUSD.toFixed(3)}</td>
-                  <td className={tx.type === "Buy" ? "text-green-400" : "text-red-400"}>{tx.priceSOL}</td>
-                  <td className={tx.type === "Buy" ? "text-green-400" : "text-red-400"}>{tx.amount}</td>
-                  <td>{tx.maker}</td>
+                  <td className={tx.type === "Buy" ? "text-green-300" : "text-red-300"}>${tx.totalUSD.toFixed(2)}</td>
+                  <td className={tx.type === "Buy" ? "text-green-300" : "text-red-300"}>${tx.priceUSD.toFixed(3)}</td>
+                  <td className={tx.type === "Buy" ? "text-green-300" : "text-red-300"}>{tx.priceSOL}</td>
+                  <td className={tx.type === "Buy" ? "text-green-300" : "text-red-300"}>{tx.amount}</td>
+                  <td className={tx.type === "Buy" ? "text-green-300" : "text-red-300"}>{tx.maker}</td>
                 </tr>
               ))}
             </tbody>

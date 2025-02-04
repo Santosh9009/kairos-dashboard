@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import wallet from "../../public/wallet.png";
-import thunder from "../../public/thunder.png";
+import sellthunder from "../../public/sellthunder.svg";
 import sellIcon from "../../public/sellIcion.png";
+import thunder from '../../public/thunder.png'
 import solana from "../../public/solana.png";
 import WalletSelectionPanel from "./Selectwallet";
 import Image from "next/image";
@@ -21,25 +22,25 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
   const [isWalletOpen, setIsWalletOpen] = useState(false);
 
   return (
-    <div className="bg-[#1a1a1a] border-gray-700 p-4 rounded-md relative">
+    <div className="bg-[#1a1a1a] border-gray-700 p-4 rounded-md relative w-[50%]">
       <div className="grid grid-cols-2 gap-4 mb-4">
         <button
           onClick={() => setActiveTab("buy")}
-          className={`flex font-space-grotesk justify-center items-center gap-3 py-2 px-4 rounded-md transition-all ${
+          className={`flex font-space-grotesk justify-center items-center gap-3 py-2 px-4 rounded-xl transition-all duration-200 border border-white/10 ${
             activeTab === "buy"
-              ? "bg-green-400 text-white"
-              : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              ? "bg-gradient-to-t from-[#2d2d2d] via-[#1f1f1f] to-[#1a1a1a] hover:from-[#383838] hover:via-[#2d2d2d] hover:to-[#232323] text-white"
+              : " text-gray-400 "
           }`}
         >
-          <Image src={thunder} alt="buy" />
+          <Image className="" src={sellthunder} alt="buy" />
           Buy
         </button>
         <button
           onClick={() => setActiveTab("sell")}
-          className={`flex justify-center items-center gap-3 font-space-grotesk py-2 px-4 rounded-md transition-all ${
+          className={`flex justify-center items-center gap-3 font-space-grotesk py-2 px-4 rounded-xl transition-all duration-200 border border-white/10 ${
             activeTab === "sell"
-              ? "bg-red-500 text-white"
-              : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+              ? "bg-gradient-to-b from-[#2d2d2d] via-[#1f1f1f] to-[#1a1a1a] hover:from-[#383838] hover:via-[#2d2d2d] hover:to-[#232323] text-white"
+              : " text-gray-400"
           }`}
         >
           <Image src={sellIcon} alt="sell" />
@@ -53,7 +54,7 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
           <Switch
             checked={isMarketOrder}
             onCheckedChange={setIsMarketOrder}
-            className="data-[state=checked]:bg-green-500"
+            className="data-[state=checked]:bg-green-500 dark"
           />
         </div>
         <div className="flex items-center justify-between">
@@ -61,14 +62,14 @@ const TradingControlsPanel: React.FC<TradingControlsPanelProps> = ({ onWalletCli
           <Switch
             checked={isLimitOrder}
             onCheckedChange={setIsLimitOrder}
-            className="data-[state=checked]:bg-green-500"
+            className="data-[state=checked]:bg-green-500 dark"
           />
         </div>
         <div className="flex items-center justify-between">
           <span className="text-white text-sm">Insta Buy</span>
           <button 
             onClick={onWalletClick}
-            className="flex items-center space-x-2 bg-black rounded-xl p-1 hover:bg-gray-900 transition-colors"
+            className="flex items-center space-x-2 bg-black rounded-xl p-1 hover:bg-[#2a2a2a] transition-colors"
           >
             <div className="w-4 h-4 bg- rounded-full"></div>
             <Image alt="wallet" src={wallet} />
